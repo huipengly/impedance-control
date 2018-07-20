@@ -30,7 +30,7 @@ int main()
 				fforce = force - 10;
 			cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << endl;
 		}
-		y0 = rk4.integrate(ix, y0, dy, { fforce, M, K, B });
+		y0 = rk4.integrate(ix, y0, dy, force);
 		cout << y0[0] << endl;
 	}
 

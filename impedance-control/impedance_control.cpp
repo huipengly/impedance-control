@@ -1,15 +1,25 @@
+//#include "TcPch.h"
+//#pragma hdrstop
 #include "impedance_control.h"
 
 // other_parameter里，分别为force, M, K, B
-vector<double> differential_equation_of_impedence_control(double t, vector<double>& y0,vector<double>& dy, const vector<double> &other_parameter)
+vector<double> differential_equation_of_impedence_control(double t, vector<double>& y0,vector<double>& dy, const double force)
 {
-	//vector<double> y(2);
-	double force = other_parameter[0];
-	double M = other_parameter[1];
-	double K = other_parameter[2];
-	double B = other_parameter[3];
+	double M = 0.005;
+	double K = 1;
+	double B = 0.12;
+	double fforce = 0;
+	const double min_force = 10, max_force = 50;
+	if (force > min_force && force < max_force)
+	{
+		fforce = force - min_force;
+	}
+	else if (force > max_force)
+	{
+		fforce = 0;
+	}
 
 	dy[0] = y0[1];
-	dy[1] = (force - K * y0[0] - B * y0[1]) / M;
+	dy[1] = (fforce - K * y0[0] - B * y0[1]) / M;
 	return dy;
 }

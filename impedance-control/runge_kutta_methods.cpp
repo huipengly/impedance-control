@@ -1,7 +1,8 @@
+//#include "TcPch.h"
+//#pragma hdrstop
 #include "runge_kutta_methods.h"
-using namespace std;
 
-vector<double> RungeKutta::integrate(double t, vector<double>& y0, vector<double>& dy, const vector<double> &other_parameter)
+vector<double> RungeKutta::integrate(double t, vector<double>& y0, vector<double>& dy, const double other_parameter)
 {
 	//TODO:funŒ¥∂®“Â±®¥Ì
 
